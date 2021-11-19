@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     TextView txt, txt1;
     String store;
     Button btn, btn2;
+    Text text;
 
 
     @Override
@@ -28,7 +29,10 @@ public class MainActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                //Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                //startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+                intent.putExtra("Message", store);
                 startActivity(intent);
             }
         });
@@ -37,10 +41,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 store = txt1.getText().toString();
-                txt1.setText("Hello yaar kese ho?");
                 txt.setText(store);
+
             }
         });
-
     }
 }
