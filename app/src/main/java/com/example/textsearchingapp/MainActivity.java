@@ -29,12 +29,12 @@ public class MainActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-                startActivity(intent);
-
-                //Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
-                //intent.putExtra("Message", store);
+                //Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                 //startActivity(intent);
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+                intent.putExtra("Message", store);
+                startActivity(intent);
 
                 //Intent intent = new Intent();
                 //intent.setAction(Intent.ACTION_SEND);

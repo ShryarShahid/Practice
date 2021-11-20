@@ -2,6 +2,8 @@ package com.example.textsearchingapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -41,8 +44,20 @@ public class MainActivity2 extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                stringArrayList.remove(position);
-                adapter.notifyDataSetChanged();
+                new AlertDialog.Builder(MainActivity2.this)
+                        .setTitle("Delete Entry")
+                        .setMessage("Are you sure you want to delete it?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                stringArrayList.remove(position);
+                                Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_SHORT).show();
+                                adapter.notifyDataSetChanged();
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
             }
         });
 
